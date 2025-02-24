@@ -12,15 +12,10 @@
                 <h5 class="card-title">
                     {{ $viewData["product"]["name"] }}
                 </h5>
-                <p class="card-text">Description{{ $viewData["product"]["description"] }}</p>
-                <!-- @if($viewData["product"]["price"] > 100)
-                    <p class="card-text">Price: <span class="great-price">{{ $viewData["product"]["price"] }}</span></p>
-                @else
-                    <p class="card-text">Price: {{ $viewData["product"]["price"] }}</p>
-                @endif -->
-
-                <!--other option-->
                 <p class="card-text">Price: <span class="{{ $viewData["product"]["price"] > 100 ? 'great-price' : '' }}">{{ $viewData["product"]["price"] }}</span></p>
+                @foreach($viewData["product"]->comments as $comment)
+                    - {{ $comment->getDescription() }}<br />
+                @endforeach
             </div>
         </div>
     </div>
