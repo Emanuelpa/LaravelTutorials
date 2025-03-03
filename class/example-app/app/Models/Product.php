@@ -18,6 +18,14 @@ class Product extends Model
      * $this->attributes['price'] - int - contains the product price
      * $this->comments - Comment[] - contains the associated comment
      */
+
+    public static function validate(Request $request): void{
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric|gt:0',
+        ]);
+    }
+
     protected $fillable = ['name', 'price'];
 
     public function getId(): int
